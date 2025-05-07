@@ -1,0 +1,48 @@
+pipeline:
+  name: sast tools demo
+  identifier: sast_tools_demo
+  projectIdentifier: SonarQube_Test_Project
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: project_all_repos_connector
+        repoName: dsvw
+        build: <+input>
+  stages:
+    - stage:
+        name: scanner demo
+        identifier: scanner_demo
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          caching:
+            enabled: true
+            override: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - stepGroup:
+                  name: different scanner tools
+                  identifier: different_scanner_tools
+                  steps:
+                    - step:
+                        type: Semgrep
+                        name: Semgrep scan
+                        identifier: Semgrep_scan
+                        spec:
+                          mode: orchestration
+                          config: default
+                          target:
+                            type: repository
+                            detection: auto
+                          advanced:
+                            log:
+                              level: info
