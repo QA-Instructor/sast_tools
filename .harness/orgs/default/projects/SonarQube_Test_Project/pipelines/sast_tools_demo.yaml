@@ -74,3 +74,16 @@ pipeline:
                               advanced:
                                 log:
                                   level: info
+                        - step:
+                            type: Bandit
+                            name: Bandit scan
+                            identifier: Bandit_scan
+                            spec:
+                              mode: orchestration
+                              config: default
+                              target:
+                                type: repository
+                                detection: auto
+                              advanced:
+                                log:
+                                  level: info
