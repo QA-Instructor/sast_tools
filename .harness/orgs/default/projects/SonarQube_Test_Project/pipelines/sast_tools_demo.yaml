@@ -8,8 +8,9 @@ pipeline:
     ci:
       codebase:
         connectorRef: project_all_repos_connector
-        repoName: dsvw
+        repoName: sast_tools
         build: <+input>
+        sparseCheckout: []
   stages:
     - stage:
         name: scanner demo
