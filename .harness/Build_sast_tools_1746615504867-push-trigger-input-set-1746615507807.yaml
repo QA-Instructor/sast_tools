@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_sast_tools_1746615504867-push-trigger-input-set
+  identifier: Build_sast_tools_1746615504867pushtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: Scanning_Project
+  pipeline:
+    identifier: Build_sast_tools_1746615504867
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
