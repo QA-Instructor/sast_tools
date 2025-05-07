@@ -34,16 +34,43 @@ pipeline:
                   name: different scanner tools
                   identifier: different_scanner_tools
                   steps:
-                    - step:
-                        type: Semgrep
-                        name: Semgrep scan
-                        identifier: Semgrep_scan
-                        spec:
-                          mode: orchestration
-                          config: default
-                          target:
-                            type: repository
-                            detection: auto
-                          advanced:
-                            log:
-                              level: info
+                    - parallel:
+                        - step:
+                            type: Semgrep
+                            name: Semgrep scan
+                            identifier: Semgrep_scan
+                            spec:
+                              mode: orchestration
+                              config: default
+                              target:
+                                type: repository
+                                detection: auto
+                              advanced:
+                                log:
+                                  level: info
+                        - step:
+                            type: Owasp
+                            name: Owasp scan
+                            identifier: Owasp_scan
+                            spec:
+                              mode: orchestration
+                              config: default
+                              target:
+                                type: repository
+                                detection: auto
+                              advanced:
+                                log:
+                                  level: info
+                        - step:
+                            type: OsvScanner
+                            name: OsvScanner scan
+                            identifier: OsvScanner_scan
+                            spec:
+                              mode: orchestration
+                              config: default
+                              target:
+                                type: repository
+                                detection: auto
+                              advanced:
+                                log:
+                                  level: info
