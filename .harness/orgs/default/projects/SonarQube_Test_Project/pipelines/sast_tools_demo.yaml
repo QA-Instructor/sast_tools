@@ -8,7 +8,7 @@ pipeline:
     ci:
       codebase:
         connectorRef: project_all_repos_connector
-        repoName: sast_tools
+        repoName: dsvw
         build: <+input>
         sparseCheckout: []
   stages:
